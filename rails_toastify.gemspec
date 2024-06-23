@@ -7,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.version = RailsToastify::VERSION
   spec.authors = ["Elton Santos"]
   spec.email = ["eltonaxl@hotmail.com"]
-  spec.summary = "TODO: Write a short summary, because RubyGems requires one."
-  spec.description = "TODO: Write a longer description or delete this line."
+  spec.summary = "🎉 Rails Toastify allows you to add notifications to your app with ease."
+  spec.description = "🎉 Rails Toastify allows you to add notifications to your app with ease. Pay Attention: this gem still is in development. Please CONTRIBUTE"
   spec.homepage = "https://github.com/eltonsantos/rails_toastify"
   spec.required_ruby_version = ">= 2.6.0"
   spec.license = "MIT"
@@ -16,8 +16,7 @@ Gem::Specification.new do |spec|
   spec.metadata = {
     "homepage_uri" => spec.homepage,
     "source_code_uri" => "https://github.com/eltonsantos/rails_toastify",
-    "changelog_uri" => "TODO: Put your gem's CHANGELOG.md URL here.",
-    "allowed_push_host" => "TODO: Set to your gem server 'https://example.com'"
+    "changelog_uri" => "https://github.com/eltonsantos/rails_toastify/blob/master/CHANGELOG.md",
   }
 
   # Specify which files should be added to the gem when it is released.
