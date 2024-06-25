@@ -1,32 +1,60 @@
-.toast-container {
-  position: fixed;
-  z-index: 9999;
-  pointer-events: none;
-}
+<% if RailsToastify.configuration.framework == :bootstrap %>
+  .toast-container {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    top: 20px;
+    right: 20px;
+  }
 
-.toast {
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  margin: 8px;
-  color: #333;
-}
+  .toast {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin: 8px;
+    color: #333;
+  }
 
-.toast--success {
-  border-left: 5px solid #4caf50;
-}
+  .toast--success {
+    border-left: 5px solid #4caf50;
+  }
 
-.toast--error {
-  border-left: 5px solid #f44336;
-}
+  .toast--error {
+    border-left: 5px solid #f44336;
+  }
 
-.toast--info {
-  border-left: 5px solid #2196f3;
-}
+  .toast--info {
+    border-left: 5px solid #2196f3;
+  }
 
-.toast--warning {
-  border-left: 5px solid #ff9800;
-}
+  .toast--warning {
+    border-left: 5px solid #ff9800;
+  }
+<% elsif RailsToastify.configuration.framework == :tailwind %>
+  .toast-container {
+    @apply fixed z-50 pointer-events-none top-4 right-4;
+  }
+
+  .toast {
+    @apply flex items-center bg-white rounded shadow p-4 my-2 text-gray-800;
+  }
+
+  .toast--success {
+    @apply border-l-4 border-green-500;
+  }
+
+  .toast--error {
+    @apply border-l-4 border-red-500;
+  }
+
+  .toast--info {
+    @apply border-l-4 border-blue-500;
+  }
+
+  .toast--warning {
+    @apply border-l-4 border-yellow-500;
+  }
+<% end %>

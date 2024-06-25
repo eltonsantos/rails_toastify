@@ -1,3 +1,12 @@
+## 0.1.3
+
+- Change README
+- Load configs on module RailsToastify
+- Change engine to add initializer
+- Add style for tailwind template
+- Add generator
+- Add template
+
 ## 0.1.2
 
 - Change README

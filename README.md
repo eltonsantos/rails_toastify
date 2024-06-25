@@ -12,6 +12,20 @@ gem 'rails_toastify'
 ```
 and run **bundle install**
 
+After run:
+
+```sh
+rails generate rails_toastify:install
+```
+
+This will create a file *config/initializers/rails_toastify.rb* where you can define the framework you want to use:
+
+```ruby
+RailsToastify.configure do |config|
+  config.framework = :tailwind # or :bootstrap
+end
+```
+
 ## Usage
 
 In your *application.html.erb* add:
@@ -20,6 +34,19 @@ In your *application.html.erb* add:
 <%= stylesheet_link_tag 'rails_toastify', media: 'all' %>
 <%= javascript_include_tag 'rails_toastify' %>
 ```
+And:
+
+```html
+<div id="toast-container" class="toast-container"></div>
+```
+
+In your *config/manifest.js* add:
+
+```js
+//= link rails_toastify.css
+//= link rails_toastify.js
+```
+
 And call function `RailsToastify.showToast` any javascript:
 
 ```ruby
