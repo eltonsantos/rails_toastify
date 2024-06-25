@@ -1,31 +1,45 @@
 # RailsToastify
 
-TODO: Delete this and the text below, and describe your gem
+**Rails Toastify** allows you to easily add notifications to your app. Please note: this gem is still under development. Please CONTRIBUTE.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rails_toastify`. To experiment with that code, run `bin/console` for an interactive prompt.
+The **Rails Toastify** gem is completely inspired by the [React Toastify](https://fkhadra.github.io/react-toastify/introduction/) lib and is specially made for those React developers who are migrating to Rails thanks to Hotwire or for any other reason, and who love using Toasts and wanted a gem that makes it as easy as it is in React. 🎉 
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
-
-Install the gem and add to the application's Gemfile by executing:
-
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
-
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+Add gem in your Gemfile:
+```ruby
+gem 'rails_toastify'
+```
+and run **bundle install**
 
 ## Usage
 
-TODO: Write usage instructions here
+In your *application.html.erb* add:
 
-## Development
+```ruby
+<%= stylesheet_link_tag 'rails_toastify', media: 'all' %>
+<%= javascript_include_tag 'rails_toastify' %>
+```
+And call function `RailsToastify.showToast` any javascript:
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```ruby
+RailsToastify.showToast('This is a success message!', 'success');
+RailsToastify.showToast('This is an error message!', 'error');
+RailsToastify.showToast('This is an info message!', 'info');
+RailsToastify.showToast('This is a warning message!', 'warning');
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+## Requirements
 
-## Contributing
+- Ruby >= 2.6.0 (recommended 2.7+)  
+- Rails >= 6.0 (compatible up to Rails 7)
+  
+## Contributing to Rails Toastify
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rails_toastify.
+Fork, fix, then send a pull request. Bug reports and pull requests are welcome on GitHub at **https://github.com/eltonsantos/rails_toastify**.
+
+## Licence
+
+This gem is available as open-source under the terms of The MIT License (MIT).
+
+Copyright (c) 2024 **Elton Santos**. See **MIT-LICENSE** for further details.
