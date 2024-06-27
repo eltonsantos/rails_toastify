@@ -12,13 +12,14 @@
     align-items: center;
     background-color: #fff;
     border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
     padding: 16px;
     margin: 8px;
     color: #333;
     position: relative;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     transform: translateX(100%);
+    max-width: 300px;
   }
 
   .toast.show {
@@ -29,20 +30,20 @@
     transform: translateX(100%);
   }
 
-  .toast--success {
-    border-bottom: 5px solid #4caf50;
+  .toast--success .toast__progress-bar {
+    background-color: #4caf50;
   }
 
-  .toast--error {
-    border-bottom: 5px solid #f44336;
+  .toast--error .toast__progress-bar {
+    background-color: #f44336;
   }
 
-  .toast--info {
-    border-bottom: 5px solid #2196f3;
+  .toast--info .toast__progress-bar {
+    background-color: #2196f3;
   }
 
-  .toast--warning {
-    border-bottom: 5px solid #ff9800;
+  .toast--warning .toast__progress-bar {
+    background-color: #ff9800;
   }
 
   .toast__close-button {
@@ -67,7 +68,6 @@
     left: 0;
     width: 100%;
     height: 4px;
-    background-color: currentColor;
     animation: progress-bar 5s linear forwards;
   }
 
@@ -85,11 +85,8 @@
   }
 
   .toast {
-    @apply flex items-center bg-white rounded shadow p-4 my-2 text-gray-800 relative;
-  }
-
-  .toast {
-    @apply transition-transform duration-500 ease-in-out;
+    @apply flex items-center bg-white rounded-lg shadow-lg p-4 my-2 text-gray-800 relative max-w-sm;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     transform: translateX(100%);
   }
   
@@ -101,20 +98,20 @@
     transform: translateX(100%);
   }
 
-  .toast--success {
-    @apply border-b-4 border-green-500;
+  .toast--success .toast__progress-bar {
+    @apply bg-green-500;
   }
 
-  .toast--error {
-    @apply border-b-4 border-red-500;
+  .toast--error .toast__progress-bar {
+    @apply bg-red-500;
   }
 
-  .toast--info {
-    @apply border-b-4 border-blue-500;
+  .toast--info .toast__progress-bar {
+    @apply bg-blue-500;
   }
 
-  .toast--warning {
-    @apply border-b-4 border-yellow-500;
+  .toast--warning .toast__progress-bar {
+    @apply bg-yellow-500;
   }
 
   .toast__close-button {
@@ -126,7 +123,6 @@
 
   .toast__progress-bar {
     @apply absolute bottom-0 left-0 w-full h-1;
-    background-color: currentColor;
     animation: progress-bar 5s linear forwards;
   }
 

@@ -1,5 +1,9 @@
 # 0.1.4
 
+- Adjustments CSS progress bar and shadow
+  
+# 0.1.4
+
 - Change CSS
 - Change JS
 
