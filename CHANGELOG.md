@@ -1,4 +1,10 @@
-# 0.1.4
+# 0.1.6
+
+- Fix css and js
+- Close toast on progress bar finish
+- Toast appear on top right
+  
+# 0.1.5
 
 - Adjustments CSS progress bar and shadow
   

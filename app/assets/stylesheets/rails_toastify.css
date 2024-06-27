@@ -17,7 +17,7 @@
     margin: 8px;
     color: #333;
     position: relative;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     transform: translateX(100%);
     max-width: 300px;
   }
@@ -28,6 +28,7 @@
 
   .toast.hide {
     transform: translateX(100%);
+    opacity: 0;
   }
 
   .toast--success .toast__progress-bar {
@@ -86,7 +87,7 @@
 
   .toast {
     @apply flex items-center bg-white rounded-lg shadow-lg p-4 my-2 text-gray-800 relative max-w-sm;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     transform: translateX(100%);
   }
   
@@ -96,6 +97,7 @@
   
   .toast.hide {
     transform: translateX(100%);
+    opacity: 0;
   }
 
   .toast--success .toast__progress-bar {

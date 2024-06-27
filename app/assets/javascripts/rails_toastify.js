@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const toast = createToast(message, type, duration);
       toastContainer.appendChild(toast);
       setTimeout(() => {
-        toast.classList.add('fade-out');
+        toast.classList.add('hide');
         toast.addEventListener('transitionend', () => toast.remove());
       }, duration);
     }
@@ -52,5 +52,4 @@ document.addEventListener('DOMContentLoaded', () => {
   
     return toast;
   }
-  
 });
