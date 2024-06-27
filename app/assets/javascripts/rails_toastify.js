@@ -5,22 +5,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const toast = createToast(message, type, duration);
       toastContainer.appendChild(toast);
 
-      let timeoutId = setTimeout(() => {
+      let startTime = Date.now();
+      let remainingTime = duration;
+
+      const hideToast = () => {
         toast.classList.add('hide');
         toast.addEventListener('transitionend', () => toast.remove());
-      }, duration);
+      };
+
+      let timeoutId = setTimeout(hideToast, remainingTime);
 
       toast.addEventListener('mouseover', () => {
         clearTimeout(timeoutId);
-        progressBar.style.animationPlayState = 'paused';
+        const elapsedTime = Date.now() - startTime;
+        remainingTime -= elapsedTime;
+        toast.querySelector('.toast__progress-bar').style.animationPlayState = 'paused';
       });
 
       toast.addEventListener('mouseout', () => {
-        progressBar.style.animationPlayState = 'running';
-        timeoutId = setTimeout(() => {
-          toast.classList.add('hide');
-          toast.addEventListener('transitionend', () => toast.remove());
-        }, duration - progressBar.getBoundingClientRect().width * (duration / progressBar.offsetWidth));
+        startTime = Date.now();
+        toast.querySelector('.toast__progress-bar').style.animationPlayState = 'running';
+        timeoutId = setTimeout(hideToast, remainingTime);
       });
     }
   };

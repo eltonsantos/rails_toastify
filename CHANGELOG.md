@@ -1,3 +1,7 @@
+# 0.1.8
+
+- Fix progressbar
+
 # 0.1.7
 
 - Fix problem with toast disappear when mouseover

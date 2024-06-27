@@ -20,7 +20,7 @@
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     transform: translateX(100%);
     max-width: 300px;
-    pointer-events: auto; /* Para permitir interações do mouse */
+    pointer-events: auto;
   }
 
   .toast.show {
@@ -71,6 +71,7 @@
     width: 100%;
     height: 4px;
     animation: progress-bar 5s linear forwards;
+    animation-play-state: running;
   }
 
   @keyframes progress-bar {
@@ -91,11 +92,11 @@
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     transform: translateX(100%);
   }
-  
+
   .toast.show {
     transform: translateX(0);
   }
-  
+
   .toast.hide {
     transform: translateX(100%);
     opacity: 0;
@@ -127,6 +128,7 @@
   .toast__progress-bar {
     @apply absolute bottom-0 left-0 w-full h-1;
     animation: progress-bar 5s linear forwards;
+    animation-play-state: running;
   }
 
   @keyframes progress-bar {
