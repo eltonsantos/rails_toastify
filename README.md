@@ -56,6 +56,14 @@ RailsToastify.showToast('This is an info message!', 'info');
 RailsToastify.showToast('This is a warning message!', 'warning');
 ```
 
+To see notice in a toast add:
+
+```ruby 
+<%= javascript_tag do %>
+  RailsToastify.showToast('<%= notice %>', 'success')
+<% end %>
+```
+
 ## Requirements
 
 - Ruby >= 2.6.0 (recommended 2.7+)  

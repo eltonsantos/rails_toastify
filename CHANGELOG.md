@@ -1,3 +1,8 @@
+# 0.1.7
+
+- Fix problem with toast disappear when mouseover
+- Change README
+
 # 0.1.6
 
 - Fix css and js
