@@ -1,12 +1,13 @@
 # RailsToastify
 
-**Rails Toastify** allows you to easily add notifications to your app. Please note: this gem is still under development. Please CONTRIBUTE.
+**Rails Toastify** allows you to easily add notifications to your app. Please CONTRIBUTE.
 
 The **Rails Toastify** gem is completely inspired by the [React Toastify](https://fkhadra.github.io/react-toastify/introduction/) lib and is specially made for those React developers who are migrating to Rails thanks to Hotwire or for any other reason, and who love using Toasts and wanted a gem that makes it as easy as it is in React. 🎉 
 
 ## Installation
 
 Add gem in your Gemfile:
+
 ```ruby
 gem 'rails_toastify'
 ```
@@ -28,17 +29,18 @@ end
 
 ## Usage
 
-In your *application.html.erb* add:
+In your *application.html.erb* add in your header:
 
 ```ruby
 <%= stylesheet_link_tag 'rails_toastify', media: 'all' %>
 <%= javascript_include_tag 'rails_toastify' %>
 ```
-And:
+And in your body:
 
 ```html
 <div id="toast-container" class="toast-container"></div>
 ```
+*
 
 In your *config/manifest.js* add:
 
@@ -47,7 +49,7 @@ In your *config/manifest.js* add:
 //= link rails_toastify.js
 ```
 
-And call function `RailsToastify.showToast` any javascript:
+And call function `RailsToastify.showToast` any javascript or console:
 
 ```ruby
 RailsToastify.showToast('This is a success message!', 'success');
@@ -73,7 +75,7 @@ To see notice in a toast add:
 
 Fork, fix, then send a pull request. Bug reports and pull requests are welcome on GitHub at **https://github.com/eltonsantos/rails_toastify**.
 
-## Licence
+## License
 
 This gem is available as open-source under the terms of The MIT License (MIT).
 

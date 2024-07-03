@@ -1,23 +1,29 @@
-# 0.1.8
+## 1.0.0
+
+- Version stable tested and approved
+- Change Changelog
+- Change Readme
+
+## 0.1.8
 
 - Fix progressbar
 
-# 0.1.7
+## 0.1.7
 
 - Fix problem with toast disappear when mouseover
 - Change README
 
-# 0.1.6
+## 0.1.6
 
 - Fix css and js
 - Close toast on progress bar finish
 - Toast appear on top right
   
-# 0.1.5
+## 0.1.5
 
 - Adjustments CSS progress bar and shadow
   
-# 0.1.4
+## 0.1.4
 
 - Change CSS
 - Change JS
