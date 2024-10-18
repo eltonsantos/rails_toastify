@@ -1,3 +1,10 @@
+## 1.1.0
+
+- Add others configurations (position, animation, duration, theme and type)
+- Change CSS to new configurations
+- Change JS to new configurations
+- Add default configurations
+
 ## 1.0.0
 
 - Version stable tested and approved

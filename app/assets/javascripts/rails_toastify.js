@@ -1,72 +1,76 @@
-document.addEventListener('DOMContentLoaded', () => {
-  window.RailsToastify = {
-    showToast(message, type = 'info', duration = 5000) {
-      const toastContainer = document.querySelector('.toast-container') || createToastContainer();
-      const toast = createToast(message, type, duration);
-      toastContainer.appendChild(toast);
+const totalDuration = 3000;
+let toastIdCounter = 0;
 
-      let startTime = Date.now();
-      let remainingTime = duration;
+function showToast(message, options) {
+  const toastContainer = document.getElementById('toast-container');
+  
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${options.theme} show ${options.animation}`;
+  toast.id = `toast-${toastIdCounter}`;
 
-      const hideToast = () => {
+  /* Adicione a respectiva classe para mudar a cor da progress-bar */
+  toast.innerHTML = `
+    <div>${message}</div>
+    <div class="progress-bar progress-bar-${options.type}" id="progress-bar-${toastIdCounter}"></div>
+    <span class="close-icon" onclick="hideToast(${toastIdCounter})"><i class="fas fa-times"></i></span>
+  `;
+
+  toastContainer.appendChild(toast);
+  toastIdCounter++;
+
+  const progressBar = toast.querySelector('.progress-bar');
+  progressBar.style.width = '100%';
+
+  let remainingTime = options.duration;
+  let lastUpdateTime = Date.now();
+  let paused = false;
+  let intervalId;
+
+  function updateProgressBar() {
+    if (!paused) {
+      const currentTime = Date.now();
+      const elapsedTime = currentTime - lastUpdateTime;
+      remainingTime -= elapsedTime;
+      lastUpdateTime = currentTime;
+
+      const progress = (remainingTime / totalDuration) * 100;
+      progressBar.style.width = `${progress}%`;
+
+      if (remainingTime <= 0) {
+        clearInterval(intervalId);
+        toast.classList.remove('show');
         toast.classList.add('hide');
-        toast.addEventListener('transitionend', () => toast.remove());
-      };
-
-      let timeoutId = setTimeout(hideToast, remainingTime);
-
-      toast.addEventListener('mouseover', () => {
-        clearTimeout(timeoutId);
-        const elapsedTime = Date.now() - startTime;
-        remainingTime -= elapsedTime;
-        toast.querySelector('.toast__progress-bar').style.animationPlayState = 'paused';
-      });
-
-      toast.addEventListener('mouseout', () => {
-        startTime = Date.now();
-        toast.querySelector('.toast__progress-bar').style.animationPlayState = 'running';
-        timeoutId = setTimeout(hideToast, remainingTime);
-      });
+        setTimeout(() => {
+          toast.parentElement.removeChild(toast);
+        }, 300);
+        return;
+      }
     }
-  };
-
-  function createToastContainer() {
-    const container = document.createElement('div');
-    container.className = 'toast-container';
-    document.body.appendChild(container);
-    return container;
   }
 
-  function createToast(message, type, duration) {
-    const toast = document.createElement('div');
-    toast.className = `toast toast--${type}`;
-    toast.classList.add('show');
+  toast.addEventListener('mouseover', () => {
+    paused = true;
+  });
 
-    const closeButton = document.createElement('button');
-    closeButton.className = 'toast__close-button';
-    closeButton.innerHTML = '<svg aria-hidden="true" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7.71 8.23l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75L1 11.98l3.75-3.75L1 4.48 2.48 3l3.75 3.75L9.98 3l1.48 1.48-3.75 3.75z"></path></svg>';
-    closeButton.addEventListener('click', () => {
-      toast.classList.add('hide');
-      toast.addEventListener('transitionend', () => toast.remove());
-    });
+  toast.addEventListener('mouseout', () => {
+    paused = false;
+    lastUpdateTime = Date.now();
+  });
 
-    const progressBar = document.createElement('div');
-    progressBar.className = `toast__progress-bar toast__progress-bar--${type}`;
-    progressBar.style.animationDuration = `${duration}ms`;
+  intervalId = setInterval(updateProgressBar, 100);
+}
 
-    const body = document.createElement('div');
-    body.className = 'toast__body';
-    body.textContent = message;
-
-    toast.appendChild(body);
-    toast.appendChild(closeButton);
-    toast.appendChild(progressBar);
-
-    toast.addEventListener('click', () => {
-      toast.classList.add('hide');
-      toast.addEventListener('transitionend', () => toast.remove());
-    });
-
-    return toast;
+function hideToast(toastId) {
+  const toast = document.getElementById(`toast-${toastId}`);
+  if (toast) {
+    toast.classList.remove('show');
+    toast.classList.add('hide');
+    setTimeout(() => {
+      toast.parentElement.removeChild(toast);
+    }, 300);
   }
-});
+}
+
+window.hideToast = hideToast;
+
+/* showToast('slide'); */

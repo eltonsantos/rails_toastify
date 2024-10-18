@@ -14,10 +14,24 @@ module RailsToastify
   end
 
   class Configuration
-    attr_accessor :framework
+    attr_accessor :position, :animation, :duration, :theme, :type
 
     def initialize
-      @framework = :tailwind
+      @position = 'toast-container-bottom-right'
+      @animation = 'bounce'
+      @duration = 5000
+      @theme = 'light'
+      @type = 'default'
+    end
+
+    def to_json
+      {
+        position: @position,
+        animation: @animation,
+        duration: @duration,
+        theme: @theme,
+        type: @type
+      }.to_json
     end
   end
 
