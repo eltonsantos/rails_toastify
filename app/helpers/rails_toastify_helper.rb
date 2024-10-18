@@ -8,13 +8,21 @@ module RailsToastifyHelper
       <<-JS.html_safe
         document.addEventListener('DOMContentLoaded', function() {
           window.RailsToastify = {
+            config: #{RailsToastify.configuration.to_h.to_json},
             show: function(message, options) {
-              var config = #{RailsToastify.configuration.to_json};
-              options = options || {};
-              showToast(message, Object.assign({}, config, options));
+              options = Object.assign({}, this.config, options || {});
+              showToast(message, options);
             }
           };
         });
+      JS
+    end
+  end
+
+  def show_toast(message, options = {})
+    javascript_tag do
+      <<-JS.html_safe
+        RailsToastify.show(#{message.to_json}, #{options.to_json});
       JS
     end
   end

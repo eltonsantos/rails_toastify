@@ -17,14 +17,14 @@ module RailsToastify
     attr_accessor :position, :animation, :duration, :theme, :type
 
     def initialize
-      @position = 'toast-container-bottom-right'
+      @position = 'toast-container-top-right'
       @animation = 'bounce'
       @duration = 5000
       @theme = 'light'
       @type = 'default'
     end
 
-    def to_json
+    def to_h
       {
         position: @position,
         animation: @animation,
