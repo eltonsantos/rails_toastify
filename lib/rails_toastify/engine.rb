@@ -7,6 +7,7 @@ module RailsToastify
     end
 
     initializer 'rails_toastify.helpers' do
+      require_relative '../../app/helpers/rails_toastify_helper'
       ActiveSupport.on_load(:action_view) do
         include RailsToastifyHelper
       end

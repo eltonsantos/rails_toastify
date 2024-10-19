@@ -1,3 +1,7 @@
+## 1.2.2
+
+- Fix relative field to helpers to force autoload before include
+
 ## 1.2.1
 
 - Version stable tested and approved
