@@ -2,7 +2,9 @@
 
 **Rails Toastify** allows you to easily add notifications to your app. Please CONTRIBUTE.
 
-The **Rails Toastify** gem is completely inspired by the [React Toastify](https://fkhadra.github.io/react-toastify/introduction/) lib and is specially made for those React developers who are migrating to Rails thanks to Hotwire or for any other reason, and who love using Toasts and wanted a gem that makes it as easy as it is in React. 🎉 
+The **Rails Toastify** gem is completely inspired by the [React Toastify](https://fkhadra.github.io/react-toastify/introduction/) lib and is specially made for those React developers who are migrating to Rails thanks to Hotwire or for any other reason, and who love using Toasts and wanted a gem that makes it as easy as it is in React. 🎉
+
+To see the pure html, css and javascript that originated this gem, just access this **[codepen](https://codepen.io/eltin182/pen/QWXLaWj)** link.
 
 ## Installation
 
@@ -82,6 +84,13 @@ To see notice or alert in a toast add this in application.html.erb:
 ```
 ** Note that toast can be configured for either notice type or alert type. Both types or just one of the types can be used.
 
+## Next steps
+
+- Add tests
+- Add others positions (left, center, bottom)
+- Add fade in and fade out animation
+- In addition to the colors, allow the user to choose any color for the progress bar
+
 ## Requirements
 
 - Ruby >= 2.6.0 (recommended 2.7+)  
@@ -95,4 +104,4 @@ Fork, fix, then send a pull request. Bug reports and pull requests are welcome o
 
 This gem is available as open-source under the terms of The MIT License (MIT).
 
-Copyright (c) 2024 **Elton Santos**. See **MIT-LICENSE** for further details.
+Copyright (c) 2024 **[Elton Santos](https://eltonmelosantos.com.br)**. See **MIT-LICENSE** for further details and see **CHANGELOG** to see what was changed.

@@ -1,3 +1,19 @@
+## 1.2.1
+
+- Version stable tested and approved
+- Change Changelog
+- Change Readme
+
+## 1.2.0
+
+- Add configuration to notice type and alert type
+- Fix helper and methods
+
+## 1.1.1
+
+- Create helper and methods
+- Fix javascript
+
 ## 1.1.0
 
 - Add others configurations (position, animation, duration, theme and type)
