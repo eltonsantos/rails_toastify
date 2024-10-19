@@ -19,11 +19,19 @@ After run:
 rails generate rails_toastify:install
 ```
 
-This will create a file *config/initializers/rails_toastify.rb* where you can define the framework you want to use:
+This will create a file *config/initializers/rails_toastify.rb* where you can define what configuration you want to use:
 
 ```ruby
-RailsToastify.configure do |config|
-  config.framework = :tailwind # or :bootstrap
+RailsToastify.setup do |configuration|
+  configuration.position = 'toast-container-top-right'
+  configuration.notice_animation = 'bounce' # bounce, slide, flip, zoom 
+  configuration.alert_animation = 'slide' # bounce, slide, flip, zoom
+  configuration.notice_duration = 3000
+  configuration.alert_duration = 3000
+  configuration.notice_theme = 'light' # light, dark
+  configuration.alert_theme = 'light' # light, dark
+  configuration.notice_type = 'default' # default, success, warning, error, info
+  configuration.alert_type = 'error' # default, success, warning, error, info
 end
 ```
 
@@ -32,39 +40,47 @@ end
 In your *application.html.erb* add in your header:
 
 ```ruby
-<%= stylesheet_link_tag 'rails_toastify', media: 'all' %>
-<%= javascript_include_tag 'rails_toastify' %>
+<%= stylesheet_link_tag 'rails_toastify', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'rails_toastify', 'data-turbo-track': 'reload' %>
 ```
 And in your body:
 
 ```html
-<div id="toast-container" class="toast-container"></div>
+<%= rails_toastify_container %>
+<%= rails_toastify_script %>
 ```
-*
-
-In your *config/manifest.js* add:
-
-```js
-//= link rails_toastify.css
-//= link rails_toastify.js
-```
-
-And call function `RailsToastify.showToast` any javascript or console:
+And call function `RailsToastify.show` any javascript or console:
 
 ```ruby
-RailsToastify.showToast('This is a success message!', 'success');
-RailsToastify.showToast('This is an error message!', 'error');
-RailsToastify.showToast('This is an info message!', 'info');
-RailsToastify.showToast('This is a warning message!', 'warning');
+RailsToastify.show('This is a message!', { theme: 'light', type: 'default', animation: 'bounce', duration: 3000 });
 ```
 
-To see notice in a toast add:
+To see notice or alert in a toast add this in application.html.erb:
 
-```ruby 
-<%= javascript_tag do %>
-  RailsToastify.showToast('<%= notice %>', 'success')
+```html 
+<% if notice %>
+  <script>
+    RailsToastify.show('<%= notice %>',
+      { theme: '<%= RailsToastify.configuration.notice_theme %>',
+        type: '<%= RailsToastify.configuration.notice_type %>',
+        animation: '<%= RailsToastify.configuration.notice_animation %>',
+        duration: <%= RailsToastify.configuration.notice_duration %>
+      })
+  </script>
+<% end %>
+
+<% if alert %>
+  <script>
+    RailsToastify.show('<%= alert %>',
+      { theme: '<%= RailsToastify.configuration.alert_theme %>',
+        type: '<%= RailsToastify.configuration.alert_type %>',
+        animation: '<%= RailsToastify.configuration.alert_animation %>',
+        duration: <%= RailsToastify.configuration.alert_duration %>
+      })
+  </script>
 <% end %>
 ```
+** Note that toast can be configured for either notice type or alert type. Both types or just one of the types can be used.
 
 ## Requirements
 
