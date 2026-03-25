@@ -25,13 +25,13 @@ This will create a file *config/initializers/rails_toastify.rb* where you can de
 
 ```ruby
 RailsToastify.setup do |configuration|
-  configuration.position = 'toast-container-top-right'
-  configuration.notice_animation = 'bounce' # bounce, slide, flip, zoom 
+  configuration.position = 'toast-container-top-right' # top-right, top-left, top-center, bottom-right, bottom-left, bottom-center
+  configuration.notice_animation = 'bounce' # bounce, slide, flip, zoom
   configuration.alert_animation = 'slide' # bounce, slide, flip, zoom
   configuration.notice_duration = 3000
   configuration.alert_duration = 3000
-  configuration.notice_theme = 'light' # light, dark
-  configuration.alert_theme = 'light' # light, dark
+  configuration.notice_theme = 'light' # light, dark, colored
+  configuration.alert_theme = 'light' # light, dark, colored
   configuration.notice_type = 'default' # default, success, warning, error, info
   configuration.alert_type = 'error' # default, success, warning, error, info
 end
@@ -87,9 +87,8 @@ To see notice or alert in a toast add this in application.html.erb:
 ## Next steps
 
 - Add tests
-- Add others positions (left, center, bottom)
-- Add fade in and fade out animation
 - In addition to the colors, allow the user to choose any color for the progress bar
+- Add drag to close support
 
 ## Requirements
 

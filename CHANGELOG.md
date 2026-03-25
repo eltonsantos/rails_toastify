@@ -1,3 +1,18 @@
+## 1.2.3
+
+- Fix position configuration bug (position classes now properly override default positioning)
+- Fix progress bar duration bug (was hardcoded to 3000ms, now respects configured duration)
+- Replace Font Awesome dependency for close button with inline SVG
+- Add type-specific SVG icons (info, success, warning, error) matching React Toastify
+- Add "colored" theme support
+- Add exit animations (bounce, slide, zoom, flip)
+- Add top-center and bottom-center position options
+- Add CSS variables for easy customization
+- Add z-index (9999) to toast container
+- Update visual styling to match React Toastify (dimensions, colors, shadows, typography)
+- Add mobile responsive layout
+- Improve RailsToastify.show() to use notice defaults when called without explicit options
+
 ## 1.2.2
 
 - Fix relative field to helpers to force autoload before include

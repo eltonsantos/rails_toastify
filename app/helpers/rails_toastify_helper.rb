@@ -10,7 +10,13 @@ module RailsToastifyHelper
           window.RailsToastify = {
             config: #{RailsToastify.configuration.to_h.to_json},
             show: function(message, options) {
-              options = Object.assign({}, this.config, options || {});
+              var defaults = {
+                theme: this.config.notice_theme || 'light',
+                animation: this.config.notice_animation || 'bounce',
+                duration: this.config.notice_duration || 3000,
+                type: this.config.notice_type || 'default'
+              };
+              options = Object.assign({}, defaults, options || {});
               showToast(message, options);
             }
           };
