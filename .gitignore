@@ -13,5 +13,6 @@ InstalledFiles
 /rdoc
 /spec/reports
 /test/tmp
+/test/dummy/log/*.log
 /test/version_tmp
 /tmp/

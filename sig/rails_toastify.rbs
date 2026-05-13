@@ -1,4 +1,29 @@
 module RailsToastify
   VERSION: String
-  # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+
+  def self.configuration: () -> RailsToastify::Configuration
+  def self.configuration=: (RailsToastify::Configuration) -> RailsToastify::Configuration
+  def self.setup: () { (RailsToastify::Configuration) -> void } -> void
+
+  class Configuration
+    attr_accessor position: String
+    attr_accessor notice_animation: String
+    attr_accessor alert_animation: String
+    attr_accessor notice_duration: Integer
+    attr_accessor alert_duration: Integer
+    attr_accessor notice_theme: String
+    attr_accessor alert_theme: String
+    attr_accessor notice_type: String
+    attr_accessor alert_type: String
+    attr_accessor progress_color: String?
+    attr_accessor notice_progress_color: String?
+    attr_accessor alert_progress_color: String?
+    attr_accessor draggable: bool
+    attr_accessor drag_threshold: Float
+
+    def initialize: () -> void
+    def position_name: () -> String
+    def position_class: () -> String
+    def to_h: () -> Hash[Symbol, untyped]
+  end
 end
