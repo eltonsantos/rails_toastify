@@ -1,60 +1,64 @@
 module RailsToastifyHelper
   def rails_toastify_container
-    content_tag :div, '', id: 'toast-container', class: "toast-container #{RailsToastify.configuration.position}"
+    tag.div(
+      "",
+      id: "rails-toastify-container",
+      class: "rails-toastify-container #{RailsToastify.configuration.position_class}",
+      data: { rails_toastify_config: RailsToastify.configuration.to_h.to_json }
+    )
   end
 
   def rails_toastify_script
     javascript_tag do
       <<-JS.html_safe
-        document.addEventListener('DOMContentLoaded', function() {
-          window.RailsToastify = {
-            config: #{RailsToastify.configuration.to_h.to_json},
-            show: function(message, options) {
-              var defaults = {
-                theme: this.config.notice_theme || 'light',
-                animation: this.config.notice_animation || 'bounce',
-                duration: this.config.notice_duration || 3000,
-                type: this.config.notice_type || 'default'
-              };
-              options = Object.assign({}, defaults, options || {});
-              showToast(message, options);
-            }
-          };
-        });
+        window.RailsToastify && window.RailsToastify.init && window.RailsToastify.init();
       JS
     end
   end
 
   def rails_toastify_messages
-    output = []
-    if flash[:notice]
-      output << javascript_tag do
-        <<-JS.html_safe
-          document.addEventListener('DOMContentLoaded', function() {
-            RailsToastify.show(#{flash[:notice].to_json}, {
-              animation: '#{RailsToastify.configuration.notice_animation}',
-              duration: #{RailsToastify.configuration.notice_duration},
-              theme: '#{RailsToastify.configuration.notice_theme}',
-              type: '#{RailsToastify.configuration.notice_type}'
-            });
-          });
-        JS
+    messages = rails_toastify_flash_messages
+    return "".html_safe if messages.empty?
+
+    tag.script(
+      ERB::Util.html_escape(messages.to_json),
+      type: "application/json",
+      data: { rails_toastify_messages: true }
+    )
+  end
+
+  private
+
+  def rails_toastify_flash_messages
+    config = RailsToastify.configuration.to_h
+    [].tap do |messages|
+      if flash[:notice]
+        messages << {
+          message: flash[:notice].to_s,
+          options: {
+            kind: "notice",
+            animation: config[:notice_animation],
+            duration: config[:notice_duration],
+            theme: config[:notice_theme],
+            type: config[:notice_type],
+            progressColor: config[:notice_progress_color] || config[:progress_color]
+          }.compact
+        }
+      end
+
+      if flash[:alert]
+        messages << {
+          message: flash[:alert].to_s,
+          options: {
+            kind: "alert",
+            animation: config[:alert_animation],
+            duration: config[:alert_duration],
+            theme: config[:alert_theme],
+            type: config[:alert_type],
+            progressColor: config[:alert_progress_color] || config[:progress_color]
+          }.compact
+        }
       end
     end
-    if flash[:alert]
-      output << javascript_tag do
-        <<-JS.html_safe
-          document.addEventListener('DOMContentLoaded', function() {
-            RailsToastify.show(#{flash[:alert].to_json}, {
-              animation: '#{RailsToastify.configuration.alert_animation}',
-              duration: #{RailsToastify.configuration.alert_duration},
-              theme: '#{RailsToastify.configuration.alert_theme}',
-              type: '#{RailsToastify.configuration.alert_type}'
-            });
-          });
-        JS
-      end
-    end
-    safe_join(output)
   end
 end

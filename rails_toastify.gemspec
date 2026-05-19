@@ -7,10 +7,10 @@ Gem::Specification.new do |spec|
   spec.version = RailsToastify::VERSION
   spec.authors = ["Elton Santos"]
   spec.email = ["eltonaxl@hotmail.com"]
-  spec.summary = "🎉 Rails Toastify allows you to add notifications to your app with ease."
-  spec.description = "🎉 Rails Toastify allows you to add notifications to your app with ease. Pay Attention: this gem still is in development. Please CONTRIBUTE"
+  spec.summary = "Rails Toastify allows you to add notifications to your app with ease."
+  spec.description = "A Rails engine for Toastify-style flash and JavaScript notifications with Rails asset pipeline integration."
   spec.homepage = "https://github.com/eltonsantos/rails_toastify"
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.required_ruby_version = ">= 3.2.0"
   spec.license = "MIT"
 
   spec.metadata = {
@@ -31,8 +31,16 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "example-gem", "~> 1.0"
+  spec.add_dependency "actionview", ">= 7.1", "< 9.0"
+  spec.add_dependency "railties", ">= 7.1", "< 9.0"
+
+  spec.add_development_dependency "appraisal", "~> 2.5"
+  spec.add_development_dependency "capybara", "~> 3.40"
+  spec.add_development_dependency "minitest", "~> 5.25"
+  spec.add_development_dependency "propshaft", "~> 1.0"
+  spec.add_development_dependency "puma", "~> 6.4"
+  spec.add_development_dependency "rails", ">= 7.1", "< 9.0"
+  spec.add_development_dependency "selenium-webdriver", "~> 4.25"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

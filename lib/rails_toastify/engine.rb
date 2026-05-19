@@ -1,9 +1,13 @@
+require "rails"
+
 module RailsToastify
   class Engine < ::Rails::Engine
     isolate_namespace RailsToastify
 
     initializer 'rails_toastify.assets.precompile' do |app|
-      app.config.assets.precompile += %w(rails_toastify.js rails_toastify.css)
+      if app.config.respond_to?(:assets) && app.config.assets.respond_to?(:precompile)
+        app.config.assets.precompile += %w(rails_toastify.js rails_toastify.css)
+      end
     end
 
     initializer 'rails_toastify.helpers' do

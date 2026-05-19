@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsToastify Dummy</title>
+    <%= stylesheet_link_tag "rails_toastify", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "rails_toastify", "data-turbo-track": "reload" %>
+  </head>
+  <body>
+    <%= rails_toastify_container %>
+    <%= rails_toastify_messages %>
+    <%= yield %>
+  </body>
+</html>

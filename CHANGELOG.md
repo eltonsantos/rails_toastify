@@ -1,3 +1,14 @@
+## Unreleased
+
+- Modernize the gem baseline for Ruby 3.2+ and Rails 7.1+.
+- Add a Minitest-based verification suite, dummy Rails app, JavaScript DOM tests, Appraisal matrix, and CI workflow.
+- Make flash toast rendering data-driven, escaped, idempotent, and Turbo-aware.
+- Namespace RailsToastify DOM and CSS classes to reduce collisions with host apps.
+- Make asset precompile setup safe for modern Rails asset pipelines.
+- Add configurable progress bar colors globally, per flash kind, and per toast.
+- Add configurable drag-to-close support using pointer events.
+- Update README usage and configuration docs.
+
 ## 1.2.3
 
 - Fix position configuration bug (position classes now properly override default positioning)

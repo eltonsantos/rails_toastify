@@ -1,255 +1,251 @@
 :root {
-  --toastify-color-light: #fff;
-  --toastify-color-dark: #121212;
-  --toastify-color-info: #3498db;
-  --toastify-color-success: #07bc0c;
-  --toastify-color-warning: #f1c40f;
-  --toastify-color-error: #e74c3c;
-  --toastify-toast-width: 320px;
-  --toastify-toast-offset: 16px;
-  --toastify-toast-min-height: 64px;
-  --toastify-toast-bd-radius: 6px;
-  --toastify-toast-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  --toastify-font-family: sans-serif;
-  --toastify-z-index: 9999;
-  --toastify-text-color-light: #757575;
-  --toastify-text-color-dark: #fff;
-  --toastify-color-progress-light: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
-  --toastify-color-progress-dark: #bb86fc;
+  --rails-toastify-color-light: #fff;
+  --rails-toastify-color-dark: #121212;
+  --rails-toastify-color-info: #3498db;
+  --rails-toastify-color-success: #07bc0c;
+  --rails-toastify-color-warning: #f1c40f;
+  --rails-toastify-color-error: #e74c3c;
+  --rails-toastify-toast-width: 320px;
+  --rails-toastify-toast-offset: 16px;
+  --rails-toastify-toast-min-height: 64px;
+  --rails-toastify-toast-radius: 6px;
+  --rails-toastify-toast-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --rails-toastify-font-family: sans-serif;
+  --rails-toastify-z-index: 9999;
+  --rails-toastify-text-color-light: #757575;
+  --rails-toastify-text-color-dark: #fff;
+  --rails-toastify-color-progress-light: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
+  --rails-toastify-color-progress-dark: #bb86fc;
 }
 
-/* CONTAINER */
-.toast-container {
+.rails-toastify-container {
   position: fixed;
-  z-index: var(--toastify-z-index);
+  z-index: var(--rails-toastify-z-index);
   display: flex;
   flex-direction: column;
   gap: 12px;
+  pointer-events: none;
 }
 
-/* POSITIONS */
-.toast-container-top-left {
-  top: var(--toastify-toast-offset);
-  left: var(--toastify-toast-offset);
-  bottom: auto;
-  right: auto;
-}
-.toast-container-top-right {
-  top: var(--toastify-toast-offset);
-  right: var(--toastify-toast-offset);
-  bottom: auto;
-  left: auto;
-}
-.toast-container-top-center {
-  top: var(--toastify-toast-offset);
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: auto;
-  right: auto;
-}
-.toast-container-bottom-left {
-  bottom: var(--toastify-toast-offset);
-  left: var(--toastify-toast-offset);
-  top: auto;
-  right: auto;
-}
-.toast-container-bottom-right {
-  bottom: var(--toastify-toast-offset);
-  right: var(--toastify-toast-offset);
-  top: auto;
-  left: auto;
-}
-.toast-container-bottom-center {
-  bottom: var(--toastify-toast-offset);
-  left: 50%;
-  transform: translateX(-50%);
-  top: auto;
-  right: auto;
+.rails-toastify-container-top-left {
+  top: var(--rails-toastify-toast-offset);
+  left: var(--rails-toastify-toast-offset);
 }
 
-/* TOAST */
-.toast {
-  width: var(--toastify-toast-width);
-  min-height: var(--toastify-toast-min-height);
-  padding: 8px;
-  border-radius: var(--toastify-toast-bd-radius);
-  box-shadow: var(--toastify-toast-shadow);
-  font-family: var(--toastify-font-family);
-  background-color: var(--toastify-color-light);
-  color: var(--toastify-text-color-light);
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+.rails-toastify-container-top-right {
+  top: var(--rails-toastify-toast-offset);
+  right: var(--rails-toastify-toast-offset);
+}
+
+.rails-toastify-container-top-center {
+  top: var(--rails-toastify-toast-offset);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.rails-toastify-container-bottom-left {
+  bottom: var(--rails-toastify-toast-offset);
+  left: var(--rails-toastify-toast-offset);
+}
+
+.rails-toastify-container-bottom-right {
+  right: var(--rails-toastify-toast-offset);
+  bottom: var(--rails-toastify-toast-offset);
+}
+
+.rails-toastify-container-bottom-center {
+  bottom: var(--rails-toastify-toast-offset);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.rails-toastify-toast {
+  position: relative;
   display: flex;
   align-items: center;
-  overflow: hidden;
-  position: relative;
   box-sizing: border-box;
+  width: var(--rails-toastify-toast-width);
+  min-height: var(--rails-toastify-toast-min-height);
+  padding: 8px;
+  overflow: hidden;
+  font-family: var(--rails-toastify-font-family);
+  color: var(--rails-toastify-text-color-light);
   cursor: default;
+  pointer-events: auto;
+  background-color: var(--rails-toastify-color-light);
+  border-radius: var(--rails-toastify-toast-radius);
+  box-shadow: var(--rails-toastify-toast-shadow);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.2s ease-out;
+  touch-action: pan-y;
 }
 
-.toast.show {
+.rails-toastify-show {
   opacity: 1;
 }
 
-/* TOAST BODY */
-.toast-body {
+.rails-toastify-body {
   display: flex;
-  align-items: center;
   flex: 1 1 auto;
-  padding: 6px;
   gap: 10px;
+  align-items: center;
+  min-width: 0;
+  padding: 6px;
 }
 
-/* TYPE ICON */
-.toast-icon {
+.rails-toastify-message {
+  overflow-wrap: anywhere;
+}
+
+.rails-toastify-icon {
   display: flex;
-  align-items: center;
   flex-shrink: 0;
+  align-items: center;
   width: 20px;
   height: 20px;
 }
 
-.toast-icon svg {
-  fill: currentColor;
+.rails-toastify-icon svg {
   width: 100%;
   height: 100%;
+  fill: currentColor;
 }
 
-/* CLOSE BUTTON */
-.close-icon {
+.rails-toastify-close {
+  display: flex;
+  flex-shrink: 0;
   align-self: flex-start;
+  align-items: center;
+  padding: 4px;
   color: #000;
-  background: transparent;
-  border: none;
-  outline: none;
   cursor: pointer;
+  background: transparent;
+  border: 0;
   opacity: 0.3;
   transition: opacity 0.3s ease;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
 }
 
-.close-icon:hover,
-.close-icon:focus {
+.rails-toastify-close:hover,
+.rails-toastify-close:focus {
   opacity: 0.6;
 }
 
-.close-icon svg {
+.rails-toastify-close svg {
   width: 14px;
   height: 14px;
   fill: currentColor;
 }
 
-.toast-dark .close-icon,
-.toast-colored .close-icon {
+.rails-toastify-toast-dark .rails-toastify-close,
+.rails-toastify-toast-colored .rails-toastify-close {
   color: #fff;
   opacity: 0.7;
 }
 
-.toast-dark .close-icon:hover,
-.toast-dark .close-icon:focus,
-.toast-colored .close-icon:hover,
-.toast-colored .close-icon:focus {
+.rails-toastify-toast-dark .rails-toastify-close:hover,
+.rails-toastify-toast-dark .rails-toastify-close:focus,
+.rails-toastify-toast-colored .rails-toastify-close:hover,
+.rails-toastify-toast-colored .rails-toastify-close:focus {
   opacity: 1;
 }
 
-/* PROGRESS BAR */
-.progress-bar {
-  height: 5px;
-  width: 100%;
+.rails-toastify-progress {
   position: absolute;
   bottom: 0;
   left: 0;
+  width: 100%;
+  height: 5px;
   transition: width 0.1s linear;
 }
 
-/* THEMES */
-.toast-light {
-  background-color: var(--toastify-color-light);
-  color: var(--toastify-text-color-light);
+.rails-toastify-toast-light {
+  color: var(--rails-toastify-text-color-light);
+  background-color: var(--rails-toastify-color-light);
 }
 
-.toast-dark {
-  background-color: var(--toastify-color-dark);
-  color: var(--toastify-text-color-dark);
+.rails-toastify-toast-dark {
+  color: var(--rails-toastify-text-color-dark);
+  background-color: var(--rails-toastify-color-dark);
 }
 
-.toast-colored.toast-type-info {
-  background-color: var(--toastify-color-info);
+.rails-toastify-toast-colored.rails-toastify-type-info {
+  color: #fff;
+  background-color: var(--rails-toastify-color-info);
+}
+
+.rails-toastify-toast-colored.rails-toastify-type-success {
+  color: #fff;
+  background-color: var(--rails-toastify-color-success);
+}
+
+.rails-toastify-toast-colored.rails-toastify-type-warning {
+  color: #fff;
+  background-color: var(--rails-toastify-color-warning);
+}
+
+.rails-toastify-toast-colored.rails-toastify-type-error {
+  color: #fff;
+  background-color: var(--rails-toastify-color-error);
+}
+
+.rails-toastify-icon-info {
+  color: var(--rails-toastify-color-info);
+}
+
+.rails-toastify-icon-success {
+  color: var(--rails-toastify-color-success);
+}
+
+.rails-toastify-icon-warning {
+  color: var(--rails-toastify-color-warning);
+}
+
+.rails-toastify-icon-error {
+  color: var(--rails-toastify-color-error);
+}
+
+.rails-toastify-toast-colored .rails-toastify-icon {
   color: #fff;
 }
 
-.toast-colored.toast-type-success {
-  background-color: var(--toastify-color-success);
-  color: #fff;
+.rails-toastify-progress-default {
+  background: var(--rails-toastify-color-progress-light);
 }
 
-.toast-colored.toast-type-warning {
-  background-color: var(--toastify-color-warning);
-  color: #fff;
+.rails-toastify-progress-success {
+  background-color: var(--rails-toastify-color-success);
 }
 
-.toast-colored.toast-type-error {
-  background-color: var(--toastify-color-error);
-  color: #fff;
+.rails-toastify-progress-info {
+  background-color: var(--rails-toastify-color-info);
 }
 
-/* TYPE ICON COLORS */
-.toast-icon-info {
-  color: var(--toastify-color-info);
+.rails-toastify-progress-error {
+  background-color: var(--rails-toastify-color-error);
 }
 
-.toast-icon-success {
-  color: var(--toastify-color-success);
+.rails-toastify-progress-warning {
+  background-color: var(--rails-toastify-color-warning);
 }
 
-.toast-icon-warning {
-  color: var(--toastify-color-warning);
+.rails-toastify-toast-dark .rails-toastify-progress-default {
+  background: var(--rails-toastify-color-progress-dark);
 }
 
-.toast-icon-error {
-  color: var(--toastify-color-error);
-}
-
-.toast-colored .toast-icon {
-  color: #fff;
-}
-
-/* PROGRESS BAR TYPES */
-.progress-bar-default {
-  background: var(--toastify-color-progress-light);
-}
-
-.progress-bar-success {
-  background-color: var(--toastify-color-success);
-}
-
-.progress-bar-info {
-  background-color: var(--toastify-color-info);
-}
-
-.progress-bar-error {
-  background-color: var(--toastify-color-error);
-}
-
-.progress-bar-warning {
-  background-color: var(--toastify-color-warning);
-}
-
-.toast-dark .progress-bar-default {
-  background: var(--toastify-color-progress-dark);
-}
-
-.toast-colored .progress-bar {
+.rails-toastify-toast-colored .rails-toastify-progress {
   background: rgba(255, 255, 255, 0.7);
 }
 
-/* ENTRY ANIMATIONS */
+.rails-toastify-dragging {
+  transition: none;
+  user-select: none;
+}
 
-/* BOUNCE */
-@keyframes bounce-all {
+.rails-toastify-snap-back {
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+@keyframes rails-toastify-bounce-all {
   from,
   60%,
   75%,
@@ -276,27 +272,25 @@
   }
 }
 
-.toast.bounce {
-  animation: bounce-all 0.7s both;
+.rails-toastify-bounce {
+  animation: rails-toastify-bounce-all 0.7s both;
 }
 
-/* SLIDE */
-@keyframes slide-in {
+@keyframes rails-toastify-slide-in {
   from {
-    transform: translate3d(110%, 0, 0);
     visibility: visible;
+    transform: translate3d(110%, 0, 0);
   }
   to {
     transform: translate3d(0, 0, 0);
   }
 }
 
-.toast.slide {
-  animation: slide-in 0.3s ease-out both;
+.rails-toastify-slide {
+  animation: rails-toastify-slide-in 0.3s ease-out both;
 }
 
-/* ZOOM */
-@keyframes zoom-in {
+@keyframes rails-toastify-zoom-in {
   from {
     opacity: 0;
     transform: scale3d(0.3, 0.3, 0.3);
@@ -306,24 +300,23 @@
   }
 }
 
-.toast.zoom {
-  animation: zoom-in 0.3s both;
+.rails-toastify-zoom {
+  animation: rails-toastify-zoom-in 0.3s both;
 }
 
-/* FLIP */
-@keyframes flip-in {
+@keyframes rails-toastify-flip-in {
   from {
-    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
-    animation-timing-function: ease-in;
     opacity: 0;
+    animation-timing-function: ease-in;
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
   }
   40% {
-    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
     animation-timing-function: ease-in;
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
   }
   60% {
-    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
     opacity: 1;
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
   }
   80% {
     transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
@@ -333,13 +326,11 @@
   }
 }
 
-.toast.flip {
-  animation: flip-in 0.5s ease-in-out both;
+.rails-toastify-flip {
+  animation: rails-toastify-flip-in 0.5s ease-in-out both;
 }
 
-/* EXIT ANIMATIONS */
-
-@keyframes bounce-out-right {
+@keyframes rails-toastify-bounce-out-right {
   from {
     opacity: 1;
     transform: translate3d(0, 0, 0);
@@ -354,7 +345,7 @@
   }
 }
 
-@keyframes slide-out-right {
+@keyframes rails-toastify-slide-out-right {
   from {
     opacity: 1;
     transform: translate3d(0, 0, 0);
@@ -365,7 +356,7 @@
   }
 }
 
-@keyframes zoom-out {
+@keyframes rails-toastify-zoom-out {
   from {
     opacity: 1;
     transform: scale3d(1, 1, 1);
@@ -379,7 +370,7 @@
   }
 }
 
-@keyframes flip-out {
+@keyframes rails-toastify-flip-out {
   from {
     opacity: 1;
     transform: perspective(400px);
@@ -394,48 +385,50 @@
   }
 }
 
-.toast.bounce-exit {
-  animation: bounce-out-right 0.7s both;
+.rails-toastify-bounce-exit {
+  animation: rails-toastify-bounce-out-right 0.7s both;
 }
 
-.toast.slide-exit {
-  animation: slide-out-right 0.3s ease-in both;
+.rails-toastify-slide-exit {
+  animation: rails-toastify-slide-out-right 0.3s ease-in both;
 }
 
-.toast.zoom-exit {
-  animation: zoom-out 0.3s both;
+.rails-toastify-zoom-exit {
+  animation: rails-toastify-zoom-out 0.3s both;
 }
 
-.toast.flip-exit {
-  animation: flip-out 0.5s ease-in-out both;
+.rails-toastify-flip-exit {
+  animation: rails-toastify-flip-out 0.5s ease-in-out both;
 }
 
-/* MOBILE RESPONSIVE */
 @media only screen and (max-width: 480px) {
-  .toast-container {
+  .rails-toastify-container {
     width: 100vw;
     padding: 0;
     margin: 0;
   }
-  .toast-container-top-left,
-  .toast-container-top-right,
-  .toast-container-top-center {
+
+  .rails-toastify-container-top-left,
+  .rails-toastify-container-top-right,
+  .rails-toastify-container-top-center {
     top: 0;
-    left: 0;
     right: 0;
     bottom: auto;
+    left: 0;
     transform: none;
   }
-  .toast-container-bottom-left,
-  .toast-container-bottom-right,
-  .toast-container-bottom-center {
+
+  .rails-toastify-container-bottom-left,
+  .rails-toastify-container-bottom-right,
+  .rails-toastify-container-bottom-center {
+    top: auto;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
-    top: auto;
     transform: none;
   }
-  .toast {
+
+  .rails-toastify-toast {
     width: 100%;
     border-radius: 0;
   }

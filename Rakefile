@@ -1,4 +1,17 @@
 # frozen_string_literal: true
 
 require "bundler/gem_tasks"
-task default: %i[]
+require "rake/testtask"
+
+Rake::TestTask.new(:test) do |task|
+  task.libs << "test"
+  task.pattern = "test/**/*_test.rb"
+end
+
+task :javascript do
+  sh "node --test test/javascript/*_test.js"
+end
+
+task verify: %i[test javascript build]
+
+task default: %i[verify]
