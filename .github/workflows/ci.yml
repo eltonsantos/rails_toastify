@@ -29,4 +29,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - run: bundle exec appraisal ${{ matrix.appraisal }} bundle install
       - run: bundle exec appraisal ${{ matrix.appraisal }} rake
